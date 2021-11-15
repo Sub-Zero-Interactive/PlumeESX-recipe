@@ -108,7 +108,6 @@ tasks:
   - action: download_github
     src: https://github.com/joe-rogan-0001/joehud
     ref: main
-    subpath: joehud
     dest: ./resources/[hud]/joehud
 
   ## Patching configs: esx_basicneeds
