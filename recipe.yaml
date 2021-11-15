@@ -43,8 +43,8 @@ tasks:
     dest: ./resources/simpledrift
 
   - action: download_github
-    src: master
-    ref: e949c08c67bdfe3fb981bf4f77477faf26d187e6
+    src: https://github.com/Bob74/bob74_ipl
+    ref: master
     dest: ./resources/bob74_ipl
   
   - action: download_github
