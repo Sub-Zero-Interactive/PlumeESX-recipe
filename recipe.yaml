@@ -15,7 +15,7 @@ tasks:
   
   # Download and prepare server.cfg / loadingscreen / database
   - action: download_github
-    src: https://github.com/tabarra/PlumeESX-recipe
+    src: https://github.com/Sub-Zero-Interactive/PlumeESX-recipe
     ref: main
     dest: ./tmp/plume_esx
 
@@ -33,53 +33,48 @@ tasks:
 
   # Download basic resources and ESX dependencies
   - action: download_github
-    src: https://github.com/esx-framework/esx-legacy
-    ref: 8153f6a9221baeef0affb0176e5811007b8f5e3b
+    src: https://github.com/thelindat/esx-legacy
+    ref: main
     dest: ./resources/[legacy]
 
   - action: download_github
     src: https://github.com/tabarra/simpledrift
-    ref: 2ed57c224ae70549fbcfccc957a00ff496b78c77
+    ref: main
     dest: ./resources/simpledrift
 
   - action: download_github
-    src: https://github.com/Bob74/bob74_ipl
+    src: master
     ref: e949c08c67bdfe3fb981bf4f77477faf26d187e6
     dest: ./resources/bob74_ipl
   
   - action: download_github
     src: https://github.com/brouznouf/fivem-mysql-async
-    ref: c5fa317a65acfe2eef453257e19e3b4fde137089
+    ref: master
     dest: ./resources/mysql-async
 
   - action: download_github
     src: https://github.com/AvarianKnight/pma-voice
-    ref: 4754a4dfff1e897f14df6d7d0e06c7fbfbaa20d5
+    ref: main
     dest: ./resources/pma-voice
 
   - action: download_github
     src: https://github.com/AvarianKnight/rp-radio
-    ref: 558e14d3eb7eed62e780a30c2867eadb61ffe0ac
+    ref: master
     dest: ./resources/rp-radio
 
   - action: download_github
     src: https://github.com/thelindat/linden_outlawalert
-    ref: a28b0ab65b1a4a9fed4063a26566cf697c263fc8
+    ref: master
     dest: ./resources/shotspotter
 
   - action: download_github
-    src: https://github.com/Blumlaut/EasyAdmin
-    ref: 776ac8f3898182e5c075d533bbd89e92efa017e9
-    dest: ./resources/EasyAdmin
-
-  - action: download_github
     src: https://github.com/thelindat/mdt
-    ref: 0c804de3cd497d70d8ae76bf1699d76d4c9d94fc
+    ref: master
     dest: ./resources/mdt
 
   - action: download_github
     src: https://github.com/DevTestingPizza/vSync
-    ref: 65f0e3cdd5692b619985a7df6297ffca7db41525
+    ref: master
     dest: ./tmp/vSync
 
   - action: move_path
@@ -111,25 +106,10 @@ tasks:
 
   ## Downloading & Patching configs: cosmo hud
   - action: download_github
-    src: https://github.com/nojdh/cosmo_hud
-    ref: eed8fd7b8cbe8a02ae7339d4dee05b5d56a8097c
-    subpath: cosmo_hud
-    dest: ./resources/[hud]/cosmo_hud
-
-  - action: replace_string
-    file: ./resources/shotspotter/config.lua
-    search: 'Config.Default911 = false'
-    replace: 'Config.Default911 = true'
-
-  - action: replace_string
-    file: ./resources/[legacy]/[esx_addons]/esx_status/config.lua
-    search: "    Config.Display        = true"
-    replace: "    Config.Display        = false"
-
-  - action: replace_string
-    file: ./resources/[hud]/cosmo_hud/config.lua
-    search: 'Config.AlwaysShowRadar = false'
-    replace: 'Config.AlwaysShowRadar = true'
+    src: https://github.com/joe-rogan-0001/joehud
+    ref: main
+    subpath: joehud
+    dest: ./resources/[hud]/joehud
 
   ## Patching configs: esx_basicneeds
   - action: replace_string
@@ -140,7 +120,7 @@ tasks:
   ## Patching configs: multicharacter 
   - action: replace_string
     file: ./resources/[legacy]/[esx]/es_extended/config.lua
-    search: 'Config.Multichar                = false'
+    search: 'Config.Multichar = false'
     replace: 'Config.Multichar = true '
 
   - action: replace_string
