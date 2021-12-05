@@ -33,7 +33,7 @@ tasks:
 
   # Download basic resources and ESX dependencies
   - action: download_github
-    src: https://github.com/thelindat/esx-legacy
+    src: https://github.com/esx-framework/esx-legacy
     ref: main
     dest: ./resources/[legacy]
 
