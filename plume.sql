@@ -1220,12 +1220,6 @@ ALTER TABLE `rented_vehicles`
   ADD PRIMARY KEY (`plate`);
 
 --
--- Indexes for table `shops`
---
-ALTER TABLE `shops`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `society_moneywash`
 --
 ALTER TABLE `society_moneywash`
