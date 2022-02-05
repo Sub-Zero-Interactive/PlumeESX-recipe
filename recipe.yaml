@@ -89,12 +89,12 @@ tasks:
     
   - action: download_file
     url: https://github.com/overextended/oxmysql/releases/download/v1.9.3/oxmysql-v1.9.3.zip
-    path: ./tmp/oxmysql-v1.9.3.zip
+    path: ./tmp/oxmysql.zip
   - action: unzip
-    src: ./tmp/oxmysql-v1.9.3.zip
+    src: ./tmp/oxmysql.zip
     dest: ./tmp
   - action: move_path
-    src: ./tmp/oxmysql-v1.9.3/oxmysql
+    src: ./tmp/oxmysql
     dest: ./resources/oxmysql
 
   ## vstancer stuff
