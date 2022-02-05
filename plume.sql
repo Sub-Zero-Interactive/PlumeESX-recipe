@@ -571,33 +571,6 @@ CREATE TABLE `rented_vehicles` (
   `owner` varchar(22) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `shops`
---
-
-CREATE TABLE `shops` (
-  `id` int(11) NOT NULL,
-  `store` varchar(100) NOT NULL,
-  `item` varchar(100) NOT NULL,
-  `price` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `shops`
---
-
-INSERT INTO `shops` (`id`, `store`, `item`, `price`) VALUES
-(1, 'TwentyFourSeven', 'bread', 30),
-(2, 'TwentyFourSeven', 'water', 15),
-(3, 'RobsLiquor', 'bread', 30),
-(4, 'RobsLiquor', 'water', 15),
-(5, 'LTDgasoline', 'bread', 30),
-(6, 'LTDgasoline', 'water', 15);
-
--- --------------------------------------------------------
-
 --
 -- Table structure for table `society_moneywash`
 --
