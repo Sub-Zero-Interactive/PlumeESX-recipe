@@ -1401,13 +1401,7 @@ ALTER TABLE `phone_users_contacts`
 --
 ALTER TABLE `properties`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
-
---
--- AUTO_INCREMENT for table `shops`
---
-ALTER TABLE `shops`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
+  
 --
 -- AUTO_INCREMENT for table `society_moneywash`
 --
