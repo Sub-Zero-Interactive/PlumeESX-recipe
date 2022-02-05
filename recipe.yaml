@@ -1,8 +1,8 @@
 $engine: 3
 $onesync: legacy
-name: PlumeESXLegacy
-version: 3.3.0
-author: Tabarra & SaltySea
+name: ESX Legacy
+version: 4.0.0
+author: Tabarra & SaltySea & ESX Team
 description: A full featured and highly configurable yet lightweight ESX Legacy base that can be easily extended. 
 
 tasks:
@@ -27,16 +27,20 @@ tasks:
     src: ./tmp/plume_esx/loadingscreen
     dest: ./resources/loadingscreen
 
-  - action: connect_database
-  - action: query_database
-    file: ./tmp/plume_esx/plume.sql
-
   # Download basic resources and ESX dependencies
   - action: download_github
     src: https://github.com/esx-framework/esx-legacy
     ref: main
     dest: ./resources/[legacy]
 
+  - action: connect_database
+  - action: query_database
+    file: ./resources/[legacy]/[SQL]/base.sql
+    
+  - action: connect_database
+  - action: query_database
+    file: ./resources/[legacy]/[SQL]/addons.sql
+    
   - action: download_github
     src: https://github.com/Bob74/bob74_ipl
     ref: master
@@ -94,11 +98,7 @@ tasks:
     path: ./tmp/vstancer.zip
   - action: unzip
     src: ./tmp/vstancer.zip
-    dest: ./tmp
-  - action: move_path
-    src: ./tmp/vstancer
     dest: ./resources/vstancer
-
 
   ## Downloading & Patching configs: cosmo hud
   - action: download_github
@@ -115,13 +115,8 @@ tasks:
   ## Patching configs: multicharacter 
   - action: replace_string
     file: ./resources/[legacy]/[esx]/es_extended/config.lua
-    search: 'Config.Multichar = false'
-    replace: 'Config.Multichar = true '
-
-  - action: replace_string
-    file: ./resources/[legacy]/[esx_addons]/esx_multicharacter/server/main.lua
-    search: "Config.Database = 'es_extended'"
-    replace: "Config.Database = '{{dbName}}'"
+    search: 'Config.Multichar                = false -- Enable support for esx_multicharacter'
+    replace: 'Config.Multichar                = true -- Enable support for esx_multicharacter'
 
 
   ## Patching configs: rp-radio
@@ -141,9 +136,7 @@ tasks:
     mode: all_vars
     file: 
     - ./resources/loadingscreen/config.js
-    - ./resources/[legacy]/[esx_addons]/esx_multicharacter/server/main.lua
 
-  
   ## Cleanup
   - action: remove_path
     path: ./tmp
