@@ -38,11 +38,6 @@ tasks:
     dest: ./resources/[legacy]
 
   - action: download_github
-    src: https://github.com/tabarra/simpledrift
-    ref: main
-    dest: ./resources/simpledrift
-
-  - action: download_github
     src: https://github.com/Bob74/bob74_ipl
     ref: master
     dest: ./resources/bob74_ipl
@@ -50,7 +45,7 @@ tasks:
   - action: download_github
     src: https://github.com/AvarianKnight/pma-voice
     ref: main
-    dest: ./resources/pma-voice
+    dest: ./resources/[standalone]
 
   - action: download_github
     src: https://github.com/AvarianKnight/rp-radio
@@ -88,15 +83,11 @@ tasks:
     dest: ./resources/gcphone
     
   - action: download_file
+    path: ./tmp/files/oxmysql-1.9.3.zip
     url: https://github.com/overextended/oxmysql/releases/download/v1.9.3/oxmysql-v1.9.3.zip
-    path: ./tmp/oxmysql.zip
   - action: unzip
-    src: ./tmp/oxmysql.zip
-    dest: ./tmp
-  - action: move_path
-    src: ./tmp/oxmysql
-    dest: ./resources/oxmysql
-
+    dest: ./resources/[standalone]
+    src: ./tmp/files/oxmysql-1.9.3.zip
   ## vstancer stuff
   - action: download_file
     url: https://github.com/carmineos/fivem-vstancer/releases/download/v1.4/vstancer-v1.4.0.zip
