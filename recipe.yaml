@@ -17,134 +17,47 @@ tasks:
   - action: download_github
     src: https://github.com/Sub-Zero-Interactive/PlumeESX-recipe
     ref: main
-    dest: ./tmp/plume_esx
+    dest: ./tmp/recipe
 
   - action: move_path
-    src: ./tmp/plume_esx/server.cfg
+    src: ./tmp/recipe/server.cfg
     dest: ./server.cfg
 
   - action: move_path
-    src: ./tmp/plume_esx/loadingscreen
+    src: ./tmp/recipe/loadingscreen
     dest: ./resources/loadingscreen
-    
-  - action: connect_database
-  - action: query_database
-    file: ./tmp/plume_esx/plume.sql
-
+  
   # Download basic resources and ESX dependencies
   - action: download_github
     src: https://github.com/esx-framework/esx-legacy
     ref: main
-    dest: ./resources/[legacy]
-
-  - action: download_github
-    src: https://github.com/Bob74/bob74_ipl
-    ref: master
-    dest: ./resources/bob74_ipl
-  
-  - action: download_github
-    src: https://github.com/AvarianKnight/pma-voice
-    ref: main
-    dest: ./resources/[standalone]
-
-  - action: download_github
-    src: https://github.com/AvarianKnight/rp-radio
-    ref: master
-    dest: ./resources/rp-radio
-
-  - action: download_github
-    src: https://github.com/thelindat/linden_outlawalert
-    ref: master
-    dest: ./resources/shotspotter
-
-  - action: download_github
-    src: https://github.com/thelindat/mdt
-    ref: master
-    dest: ./resources/mdt
-
-  - action: download_github
-    src: https://github.com/DevTestingPizza/vSync
-    ref: master
-    dest: ./tmp/vSync
-
-  - action: move_path
-    src: ./tmp/vSync/vSync
-    dest: ./resources/vSync
-
-  ## GCPhone stuff
-  - action: download_file
-    url: https://github.com/Re-Ignited-Development/Re-Ignited-Phone/releases/download/V1.5/resources-1.2.zip
-    path: ./tmp/gcphone.zip
-  - action: unzip
-    src: ./tmp/gcphone.zip
-    dest: ./tmp
-  - action: move_path
-    src: ./tmp/resources-1.2/gcphone
-    dest: ./resources/gcphone
+    dest: ./temp/esx
     
+  - action: move_path
+    src: ./tmp/esx/[esx]
+    dest: ./resources/[esx]
+
+  - action: move_path
+    src: ./tmp/esx/[esx_addons]
+    dest: ./resources/[esx_addons]
+    
+  - action: connect_database
+  - action: query_database
+    file: ./tmp/esx/[SQL]/legacy.sql
+
   - action: download_file
     path: ./tmp/files/oxmysql-1.9.3.zip
     url: https://github.com/overextended/oxmysql/releases/download/v1.9.3/oxmysql-v1.9.3.zip
   - action: unzip
     dest: ./resources/[standalone]
     src: ./tmp/files/oxmysql-1.9.3.zip
-  ## vstancer stuff
-  - action: download_file
-    url: https://github.com/carmineos/fivem-vstancer/releases/download/v1.4/vstancer-v1.4.0.zip
-    path: ./tmp/vstancer.zip
-  - action: unzip
-    src: ./tmp/vstancer.zip
-    dest: ./resources/vstancer
-
-  ## Downloading & Patching configs: cosmo hud
-  - action: download_github
-    src: https://github.com/joe-rogan-0001/joehud
-    ref: main
-    dest: ./resources/[hud]/joehud
-
-  ## Patching configs: esx_basicneeds
-  - action: replace_string
-    file: ./resources/[legacy]/[esx_addons]/esx_basicneeds/config.lua
-    search: 'Config.Visible = true'
-    replace: 'Config.Visible = false'
-
+    
   ## Patching configs: multicharacter 
   - action: replace_string
-    file: ./resources/[legacy]/[esx]/es_extended/config.lua
+    file: ./resources/[esx]/es_extended/config.lua
     search: 'Config.Multichar                = false -- Enable support for esx_multicharacter'
     replace: 'Config.Multichar                = true -- Enable support for esx_multicharacter'
-
-
-  ## Patching configs: rp-radio
-  - action: replace_string
-    file: ./resources/rp-radio/config.lua
-    search: |
-      Name = "INPUT_REPLAY_START_STOP_RECORDING_SECONDARY", -- Control name"
-    replace: | 
-      Name = "INPUT_SELECT_CHARACTER_MICHAEL", -- Control name"
-
-  - action: replace_string
-    file: ./resources/rp-radio/config.lua
-    search: 'Key = 289, -- F2'
-    replace: 'Key = 166, -- F5'
-
-  - action: replace_string
-    mode: all_vars
-    file: 
-    - ./resources/loadingscreen/config.js
 
   ## Cleanup
   - action: remove_path
     path: ./tmp
-  - action: remove_path
-    path: ./resources/esx_example
-  - action: remove_path
-    path: ./resources/server.cfg
-  - action: remove_path
-    path: ./resources/[legacy]/esx_example
-  - action: remove_path
-    path: ./resources/[legacy]/[esx_addons]/esx_whitelist
-  - action: remove_path
-    path: ./resources/[legacy]/[esx_addons]/esx_voice
-  - action: remove_path
-    path: ./resources/[legacy]/[esx_addons]/esx_phone
