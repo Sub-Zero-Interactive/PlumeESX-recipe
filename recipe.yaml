@@ -73,6 +73,23 @@ tasks:
     dest: ./resources/[standalone]
     src: ./tmp/files/oxmysql-1.9.3.zip
     
+  - action: download_file
+    path: ./tmp/files/npwd.zip
+    url: https://github.com/project-error/npwd/releases/download/1.1.6/npwd.zip
+  - action: unzip
+    dest: ./resources/[standalone]
+    src: ./tmp/files/npwd.zip
+
+  - action: download_github
+    src: https://github.com/project-error/screenshot-basic
+    ref: main
+    dest: ./resources/[esx_addons]/esx-npwd
+
+  - action: download_github
+    src: https://github.com/overextended/esx-npwd
+    ref: master
+    dest: ./resources/[standalone]/screenshot-basic
+    
   ## Patching configs: HUD 
   - action: replace_string
     file: ./resources/[esx]/es_extended/config.lua
@@ -105,6 +122,12 @@ tasks:
     mode: all_vars
     file: 
     - ./resources/loadingscreen/config.js
+
+  ## Patching configs: NPWD
+  - action: replace_string
+    file: ./resources/[standalone]/npwd/config.json
+    search: '"useResourceIntegration": false,'
+    replace: '"useResourceIntegration": true,'
 
   ## Cleanup
   - action: remove_path
