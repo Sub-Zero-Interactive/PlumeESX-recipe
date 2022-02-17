@@ -1,8 +1,8 @@
 $engine: 3
 $onesync: legacy
 name: ESX Legacy
-version: 4.0.0
-author: Tabarra & SaltySea & ESX Team
+version: 0.1.1
+author: ESX Framework
 description: A full featured and highly configurable yet lightweight ESX Legacy base that can be easily extended. 
 
 tasks:
@@ -28,10 +28,16 @@ tasks:
     dest: ./resources/loadingscreen
   
   # Download basic resources and ESX dependencies
+
+  - action: download_github
+    src: https://github.com/Bob74/bob74_ipl
+    ref: master
+    dest: ./resources/bob74_ipl
+
   - action: download_github
     src: https://github.com/esx-framework/esx-legacy
     ref: main
-    dest: ./temp/esx
+    dest: ./tmp/esx
     
   - action: move_path
     src: ./tmp/esx/[esx]
@@ -41,6 +47,21 @@ tasks:
     src: ./tmp/esx/[esx_addons]
     dest: ./resources/[esx_addons]
     
+  - action: download_github
+    src: https://github.com/AvarianKnight/pma-voice
+    ref: main
+    dest: ./resources/[standalone]
+
+  - action: download_github
+    src: https://github.com/EntityEvolution/ev-hud
+    ref: main
+    dest: ./resources/[hud]
+
+  - action: download_github
+    src: https://github.com/AvarianKnight/rp-radio
+    ref: master
+    dest: ./resources/rp-radio
+
   - action: connect_database
   - action: query_database
     file: ./tmp/esx/[SQL]/legacy.sql
@@ -52,12 +73,42 @@ tasks:
     dest: ./resources/[standalone]
     src: ./tmp/files/oxmysql-1.9.3.zip
     
-  ## Patching configs: multicharacter 
+  ## Patching configs: HUD 
   - action: replace_string
     file: ./resources/[esx]/es_extended/config.lua
-    search: 'Config.Multichar                = false -- Enable support for esx_multicharacter'
-    replace: 'Config.Multichar                = true -- Enable support for esx_multicharacter'
+    search: 'Config.EnableHud            	= true -- enable the default hud? Display current job and accounts (black, bank & cash)'
+    replace: 'Config.EnableHud            	= false -- enable the default hud? Display current job and accounts (black, bank & cash)'
+
+  - action: replace_string
+    file: ./resources/./resources/[hud]/ev-hud/config/config.js
+    search: 'Config.useFramework = false // Set to true to use ESX, VRP or QBCore'
+    replace: 'Config.useFramework = true // Set to true to use ESX, VRP or QBCore'
+  
+  ## Patching configs: rp-radio
+  - action: replace_string
+    file: ./resources/rp-radio/config.lua
+    search: |
+      Name = "INPUT_REPLAY_START_STOP_RECORDING_SECONDARY", -- Control name"
+    replace: | 
+      Name = "INPUT_SELECT_CHARACTER_MICHAEL", -- Control name"
+  - action: replace_string
+    file: ./resources/rp-radio/config.lua
+    search: 'Key = 289, -- F2'
+    replace: 'Key = 166, -- F5'
+
+  - action: replace_string
+    mode: all_vars
+    file: 
+    - ./resources/loadingscreen/config.js
 
   ## Cleanup
   - action: remove_path
     path: ./tmp
+  - action: remove_path
+    path: ./resources/esx_example
+  - action: remove_path
+    path: ./resources/esx_addons]/esx_whitelist
+  - action: remove_path
+    path: ./resources/[esx_addons]/esx_voice
+  - action: remove_path
+    path: ./resources/[esx_addons]/esx_phone
