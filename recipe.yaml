@@ -132,7 +132,7 @@ tasks:
   ## Cleanup
   - action: remove_path
     path: ./tmp
-  - action: remove_paths
+  - action: remove_path
     path: ./resources/esx_example
   - action: remove_path
     path: ./resources/[esx_addons]/esx_whitelist
