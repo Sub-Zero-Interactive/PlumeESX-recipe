@@ -1,7 +1,7 @@
 $engine: 3
 $onesync: legacy
 name: ESX Legacy
-version: 0.1.1
+version: 0.1.2
 author: ESX Framework
 description: A full featured and highly configurable yet lightweight ESX Legacy base that can be easily extended. 
 
@@ -50,12 +50,12 @@ tasks:
   - action: download_github
     src: https://github.com/AvarianKnight/pma-voice
     ref: main
-    dest: ./resources/[standalone]
+    dest: ./resources/[standalone]/pma-voice
 
   - action: download_github
     src: https://github.com/EntityEvolution/ev-hud
     ref: main
-    dest: ./resources/[hud]
+    dest: ./resources/[hud]/ev-hud
 
   - action: download_github
     src: https://github.com/AvarianKnight/rp-radio
@@ -80,7 +80,7 @@ tasks:
     replace: 'Config.EnableHud            	= false -- enable the default hud? Display current job and accounts (black, bank & cash)'
 
   - action: replace_string
-    file: ./resources/./resources/[hud]/ev-hud/config/config.js
+    file: ./resources/[hud]/ev-hud/config/config.js
     search: 'Config.useFramework = false // Set to true to use ESX, VRP or QBCore'
     replace: 'Config.useFramework = true // Set to true to use ESX, VRP or QBCore'
   
@@ -104,10 +104,10 @@ tasks:
   ## Cleanup
   - action: remove_path
     path: ./tmp
-  - action: remove_path
+  - action: remove_paths
     path: ./resources/esx_example
   - action: remove_path
-    path: ./resources/esx_addons]/esx_whitelist
+    path: ./resources/[esx_addons]/esx_whitelist
   - action: remove_path
     path: ./resources/[esx_addons]/esx_voice
   - action: remove_path
