@@ -131,6 +131,10 @@ tasks:
     file: ./resources/[standalone]/npwd/config.json
     search: '"useResourceIntegration": false,'
     replace: '"useResourceIntegration": true,'
+  - action: replace_string
+    file: ./resources/[standalone]/npwd/config.json
+    search: '"toggleKey": "f1"'
+    replace: '"toggleKey": "f4"'
 
   ## Cleanup
   - action: remove_path
