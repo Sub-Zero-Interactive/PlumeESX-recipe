@@ -80,13 +80,16 @@ tasks:
     dest: ./resources/[standalone]
     src: ./tmp/files/npwd.zip
 
+  - action: query_database
+    file: ./resources/[standalone]/npwd/import.sql
+
   - action: download_github
     src: https://github.com/overextended/esx-npwd
     ref: main
     dest: ./resources/[esx_addons]/esx-npwd
 
   - action: download_github
-    src: https://github.com/project-error/screenshot-basic
+    src: https://github.com/citizenfx/screenshot-basic
     ref: master
     dest: ./resources/[standalone]/screenshot-basic
     
