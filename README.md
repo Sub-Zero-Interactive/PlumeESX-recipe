@@ -1,33 +1,12 @@
-# PlumeESX-recipe
+<h1 align='center'>ESX Legacy</a></h1><p align='center'><b><a href='https://discord.gg/cNx6HF9P5J'>Discord</a> - <a href='https://esx-framework.org/'>Website</a> - <a href='https://docs.esx-framework.org/legacy/installation'>Documentation</a></b></h5>
 
-[![Plume ESX Video Tutorial](https://i.imgur.com/jjUbS1Z.png)](https://www.youtube.com/watch?v=iGfwUCO0RZQ)
+##### ESX is the leading framework for creating roleplay servers on FiveM, with many official and community resources designed to utilise the tools provided here. For a taste of what's available
 
-**Description:** A full featured and highly configurable yet lightweight ESX Legacy base that can be easily extended.  
+> esx_identity: Enables character registration defining a players name, sex, height, and date of birth
+> esx_society: Allows job resources to register a society, gaining employee management, society funds, and more
+> esx_billing: Allows members of some societies to send fines or bills to other players
+> esx_vehicleshop: Allow players to purchase vehicles from a dealership, or setup society support for a player-managed dealership
+> esx_ambulancejob: Adds a death and respawn system while allowing players to work as EMS to heal and revive others
 
-This recipe runs inside [**txAdmin**](https://github.com/tabarra/txAdmin).  
-Please check the [**Recipe Documentation Page**](https://github.com/tabarra/txAdmin/blob/master/docs/recipe.md).
+Many more resources are included in this Recipe, or you can browse the [Cfx.re Releases board](https://forum.cfx.re/tag/esx) for more.
 
-## TODO:
-- [ ] add linden inventory
-- [ ] Maybe add this: https://github.com/czsquizer/sqz_carmenu
-
-## Changelog
-
-### v3.0.0
-- Updated recipe to work with NEW ESX Legacy
-- Added new multicharacter system
-- Updated IPLs
-- Update loading screen
-- Optimised file structure
-- Minimised server.cfg
-- Added modern hud
-- Added MDT (police Mobile Data Terminal)
-- Added shotspotter
-- Added pma-voice
-- Added RP-Radio
-
-### v2.1.0
-- Removed `cd_easytime`;
-- Fixed spawnpoint being inside the job listing marker;
-- Fixed vehicle ownership issues (solves cars not saving in garage);
-- Automatic admin for people that join the server for the first time with the `commands` ace permission.
